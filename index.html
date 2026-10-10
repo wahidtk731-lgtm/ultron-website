@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ultron Assistant — 100% Offline Android Voice Assistant. Zero cloud telemetry, zero API keys, and ultra-compact 372 KB APK.">
+    <meta name="theme-color" content="#07090e">
+    <link rel="icon" type="image/png" href="assets/favi.png">
+    <link rel="apple-touch-icon" href="assets/favi.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Ultron Assistant — 100% Offline Android Voice Engine</title>
+</head>
+<body>
+    <!-- Top Navigation Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="brand">
+                <img src="assets/favi.png" alt="Ultron Assistant" class="brand-icon">
+                Ultron Assistant
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#features">Capabilities</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#playground">Playground</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#" class="open-terms-modal">Terms & Privacy</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#download" class="btn btn-primary">Get APK (372 KB)</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="overview">
+            <div class="container">
+                <span class="hero-badge">Offline Voice & Automation Engine</span>
+                <h1 class="hero-title">Zero Cloud Dependencies.<br><span class="gradient-text">Complete Local Control.</span></h1>
+                <p class="hero-subtitle">Ultron is a standalone voice assistant for Android built from first principles. Operates completely on-device with zero external API calls, zero telemetry, and an ultra-compact 372 KB APK footprint.</p>
+
+                <div class="hero-cta">
+                    <a href="#download" class="btn btn-primary btn-lg">Download Ultron APK (v1.0)</a>
+                    <a href="https://github.com/wahidtk731-lgtm/ultron" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">View Source on GitHub</a>
+                </div>
+
+                <div class="hero-meta-badges">
+                    <span class="hero-meta-item">Package Size: 372 KB</span>
+                    <span class="hero-meta-item">•</span>
+                    <span class="hero-meta-item">Android 7.0+ (Nougat to 14)</span>
+                    <span class="hero-meta-item">•</span>
+                    <span class="hero-meta-item">Engine: Native Java & Vosk</span>
+                    <span class="hero-meta-item">•</span>
+                    <span class="hero-meta-item">Network Usage: 0 KB (100% Air-gapped)</span>
+                </div>
+
+                <!-- Interactive Stadium Capsule Simulator -->
+                <div class="capsule-preview">
+                    <div class="capsule-header">
+                        <div class="capsule-title">
+                            <span class="pulse-dot"></span>
+                            Always-On-Top Floating HUD Preview
+                        </div>
+                        <div class="audio-bars" aria-hidden="true">
+                            <span class="audio-bar"></span>
+                            <span class="audio-bar"></span>
+                            <span class="audio-bar"></span>
+                            <span class="audio-bar"></span>
+                            <span class="audio-bar"></span>
+                        </div>
+                    </div>
+                    <div class="capsule-body">
+                        <div class="capsule-query">
+                            Spoken Input: <span>"Turn off Wi-Fi and open YouTube Shorts"</span>
+                        </div>
+                        <div class="capsule-reply">
+                            <strong>Intent Engine Dispatcher:</strong> Disabling device Wi-Fi interface via WifiManager, then resolving deep link route to YouTube Shorts player.
+                            <div class="step-chain">
+                                <span class="step-chip done">Step 1: wifi_off</span>
+                                <span class="step-chip done">Step 2: vnd.youtube:shorts</span>
+                                <span class="step-chip">Handoff Delay: 1.3s</span>
+                                <span class="step-chip">On-Device Latency: 28ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features Section -->
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Capabilities</span>
+                    <h2 class="section-title">Engineered for Performance and Total Privacy</h2>
+                    <p class="section-description">Unlike cloud assistants that stream raw microphone feeds to external datacenters, Ultron executes speech recognition, intent resolution, and system actions strictly on local hardware.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper" style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;">01</div>
+                        <h3 class="feature-title">Pure Offline Operation</h3>
+                        <p class="feature-text">Zero network roundtrips required. Operates with full speech decoding, classification, and device automation even in airplane mode or air-gapped environments without SIM cards or Wi-Fi.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper" style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;">02</div>
+                        <h3 class="feature-title">Acoustic Phonetic Normalizer</h3>
+                        <p class="feature-text">Solves acoustic decoder ambiguity when Vosk STT outputs phonetically adjacent variations (such as "all thrown", "all drone", or "out run") by mapping them back to canonical wake intents.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper" style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;">03</div>
+                        <h3 class="feature-title">Chained Multi-Step Automation</h3>
+                        <p class="feature-text">Parses conjunctions such as "and", "then", or "after that" to break complex instructions into sequential actions, executing multi-step routines with deterministic handoff delays.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper" style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;">04</div>
+                        <h3 class="feature-title">Ultra-Compact 372 KB Binary</h3>
+                        <p class="feature-text">Compiled without heavy third-party SDKs, Google Play Services dependencies, or analytics bloatware. Targets clean Java 7 bytecode with maximum backward compatibility across Android 7 to 14.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper" style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;">05</div>
+                        <h3 class="feature-title">Always-On-Top Floating HUD</h3>
+                        <p class="feature-text">Draggable desktop-style overlay widget accessible over any running Android app. Features four distinct dynamic glow states for Idle, Listening, Processing, and Speaking modes.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper" style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;">06</div>
+                        <h3 class="feature-title">Direct Framework Integration</h3>
+                        <p class="feature-text">Controls system hardware interfaces directly via native Android framework classes including WifiManager, BluetoothAdapter, NotificationListenerService, and StatusBarManager.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Deep Dive Section -->
+        <section class="section" id="architecture">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">System Architecture</span>
+                    <h2 class="section-title">Modular Subsystem Architecture</h2>
+                    <p class="section-description">Ultron separates audio ingestion, phonetic normalization, classification, and execution into isolated, deterministic stages.</p>
+                </div>
+
+                <div class="architecture-list">
+                    <div class="arch-item">
+                        <div class="arch-header">
+                            <span class="arch-class-name">SpeechNormalizer.java & VoskEngine</span>
+                            <span class="arch-tag">Audio & Acoustic Layer</span>
+                        </div>
+                        <p class="arch-desc">Converts raw 16kHz PCM microphone audio to text via Vosk acoustic models, immediately passing raw transcripts through the Phonetic Normalization Engine.</p>
+                        <ul class="arch-points">
+                            <li>Translates phonetically degraded acoustic outputs ("all thrown", "all drone", "hall drone") to canonical wake words.</li>
+                            <li>Operates with sub-15ms phonetic mapping overhead without loading heavy external language models.</li>
+                            <li>Handles wake word stripping and cleans punctuation remnants before intent classification.</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-item">
+                        <div class="arch-header">
+                            <span class="arch-class-name">UltronIntentEngine.java</span>
+                            <span class="arch-tag">NLP & Intent Classification</span>
+                        </div>
+                        <p class="arch-desc">Zero-cloud natural language understanding pipeline that parses user intent and extracts target system entities.</p>
+                        <ul class="arch-points">
+                            <li>Lexical analyzer identifies multi-command split markers: "and", "then", and "after that".</li>
+                            <li>Pattern matching engine matches commands across system settings, application launches, and deep links.</li>
+                            <li>Deterministic rule execution guarantees predictable output without cloud model hallucination.</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-item">
+                        <div class="arch-header">
+                            <span class="arch-class-name">FloatingWidgetService.java</span>
+                            <span class="arch-tag">UI & Foreground Service</span>
+                        </div>
+                        <p class="arch-desc">Android WindowManager overlay service providing an always-accessible assistant trigger across all active apps.</p>
+                        <ul class="arch-points">
+                            <li>Supports Click-to-Speak to trigger audio recognition instantly without wake word overhead.</li>
+                            <li>Visual state machine switches HUD glow: Cyan (Idle), Red Pulse (Listening), Amber (Processing), Green (Speaking).</li>
+                            <li>Runs as a lean foreground service maintaining low battery consumption and stable lifecycle persistence.</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-item">
+                        <div class="arch-header">
+                            <span class="arch-class-name">DeviceActionDispatcher.java</span>
+                            <span class="arch-tag">System Hardware & IPC</span>
+                        </div>
+                        <p class="arch-desc">Direct execution boundary communicating with native Android subsystems and PackageManager.</p>
+                        <ul class="arch-points">
+                            <li>Directly toggles device Wi-Fi, Bluetooth, quick settings shade, and status bar expansion.</li>
+                            <li>Queries installed applications to resolve target package names and launch main Activities.</li>
+                            <li>Routes specialized deep links (such as Instagram Reels and YouTube Shorts) directly to target application components.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Command Playground -->
+        <section class="section" id="playground">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Interactive Playground</span>
+                    <h2 class="section-title">Test the Intent Classifier</h2>
+                    <p class="section-description">Click any sample command below or type your own compound request to simulate how the Ultron Intent Engine tokenizes and sequences actions.</p>
+                </div>
+
+                <div class="command-playground">
+                    <div class="command-filters">
+                        <button class="cmd-filter-btn active" data-category="all">All Commands</button>
+                        <button class="cmd-filter-btn" data-category="system">System Controls</button>
+                        <button class="cmd-filter-btn" data-category="apps">App Deep Links</button>
+                        <button class="cmd-filter-btn" data-category="productivity">Productivity & Multi-Step</button>
+                    </div>
+
+                    <div class="command-grid">
+                        <button class="command-pill" data-cmd="turn on wifi" data-cat="system">
+                            <span>turn on wifi</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
+                        </button>
+                        <button class="command-pill" data-cmd="turn off bluetooth" data-cat="system">
+                            <span>turn off bluetooth</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
+                        </button>
+                        <button class="command-pill" data-cmd="clear notifications" data-cat="system">
+                            <span>clear notifications</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
+                        </button>
+                        <button class="command-pill" data-cmd="open quick settings" data-cat="system">
+                            <span>open quick settings</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
+                        </button>
+                        <button class="command-pill" data-cmd="switch to recent app" data-cat="system">
+                            <span>switch to recent app</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
+                        </button>
+                        <button class="command-pill" data-cmd="open instagram reels" data-cat="apps">
+                            <span>open instagram reels</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">Deep Link</span>
+                        </button>
+                        <button class="command-pill" data-cmd="open youtube shorts" data-cat="apps">
+                            <span>open youtube shorts</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">Deep Link</span>
+                        </button>
+                        <button class="command-pill" data-cmd="open chrome" data-cat="apps">
+                            <span>open chrome</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">Launch</span>
+                        </button>
+                        <button class="command-pill" data-cmd="what time is it" data-cat="productivity">
+                            <span>what time is it</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">Query</span>
+                        </button>
+                        <button class="command-pill" data-cmd="take a note meeting at 4pm" data-cat="productivity">
+                            <span>take a note meeting at 4pm</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">Storage</span>
+                        </button>
+                        <button class="command-pill" data-cmd="search for rust programming tutorial" data-cat="productivity">
+                            <span>search for rust tutorial</span>
+                            <span style="color: var(--text-muted); font-size: 0.75rem;">Web</span>
+                        </button>
+                        <button class="command-pill" data-cmd="turn off wifi and open youtube shorts" data-cat="productivity">
+                            <span>turn off wifi and open shorts</span>
+                            <span style="color: var(--accent-cyan); font-size: 0.75rem;">Compound</span>
+                        </button>
+                    </div>
+
+                    <div class="simulator-box">
+                        <div class="sim-input-row">
+                            <input type="text" id="simInput" class="sim-input" placeholder="Type a command or compound phrase (e.g. 'turn on wifi and open chrome')..." value="turn off wifi and open youtube shorts">
+                            <button id="simRunBtn" class="btn btn-primary">Simulate</button>
+                        </div>
+                        <div id="simOutput" class="sim-output">
+                            <!-- Output populated by script.js -->
+                            <div style="color: var(--accent-cyan);">Click "Simulate" or choose any command above to test real-time intent parsing.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Binary Download & Integrity Section -->
+        <section class="section download-section" id="download">
+            <div class="container">
+                <div class="download-card">
+                    <span class="section-tag">Direct Package Distribution</span>
+                    <h2 class="section-title">Download Ultron Assistant APK</h2>
+                    <p class="section-description" style="max-width: 620px; margin: 0 auto 24px;">Standalone, unsigned sideloadable APK compiled directly from source. Complete zero-dependency build.</p>
+
+                    <div class="download-badges">
+                        <span class="badge-tag">Version: 1.0.0 Stable</span>
+                        <span class="badge-tag">Size: 372 KB (381,168 B)</span>
+                        <span class="badge-tag">Android 7.0 - 14</span>
+                        <span class="badge-tag">Arch: Universal (All CPUs)</span>
+                        <span class="badge-tag">Tracking SDKs: 0</span>
+                    </div>
+
+                    <div class="download-actions">
+                        <a href="UltronAssistant.apk" download="UltronAssistant.apk" class="btn btn-primary btn-lg">
+                            Download UltronAssistant.apk (372 KB)
+                        </a>
+                        <a href="https://github.com/wahidtk731-lgtm/ultron" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            View Python & Android Source Code
+                        </a>
+                    </div>
+
+                    <div class="checksum-box">
+                        <div>
+                            <span style="font-weight: 600; color: #fff;">SHA-256 Checksum:</span>
+                            <div id="checksumHash" class="checksum-hash">2125a63373bc038eea382a5f470fab1c05b1152e1900a48598587017dfe3b423</div>
+                        </div>
+                        <button id="copyChecksumBtn" class="copy-btn">Copy Hash</button>
+                    </div>
+
+                    <!-- Step-by-Step Installation Guide -->
+                    <div class="install-guide">
+                        <h4>Sideloading Instructions</h4>
+                        <div class="steps-list">
+                            <div class="step-box">
+                                <div class="step-num">1</div>
+                                <h5>Download APK</h5>
+                                <p>Save UltronAssistant.apk directly to your Android device storage.</p>
+                            </div>
+                            <div class="step-box">
+                                <div class="step-num">2</div>
+                                <h5>Enable Sideloading</h5>
+                                <p>Enable "Install unknown apps" for your browser or file manager in Android Settings.</p>
+                            </div>
+                            <div class="step-box">
+                                <div class="step-num">3</div>
+                                <h5>Grant Permissions</h5>
+                                <p>Grant Record Audio (for local microphone input) and Overlay permission (for HUD button).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Support & Repository Section -->
+        <section class="section" id="support">
+            <div class="container">
+                <div class="support-card">
+                    <h3 class="support-title">Open Source Development</h3>
+                    <p class="support-desc">Ultron is developed and maintained by wahidtk731-lgtm. Issues, feature contributions, and documentation improvements are welcome on GitHub.</p>
+                    <a href="https://github.com/wahidtk731-lgtm/ultron" target="_blank" rel="noopener noreferrer" class="btn btn-support btn-lg">
+                        Explore Repository on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Terms and Privacy Modal -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Terms of Service & Privacy Policy</h3>
+                <button class="modal-close" id="closeTermsModal" aria-label="Close modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="terms-clause">
+                    <h3>1. Complete Local Privacy Guarantee</h3>
+                    <p>Ultron Assistant does not transmit audio recordings, text transcriptions, command histories, device identifiers, or usage telemetry to any external server or third-party service. All computation occurs strictly in local device memory.</p>
+                </div>
+
+                <div class="terms-clause">
+                    <h3>2. System Permissions Utilization</h3>
+                    <p>The application requests strictly necessary Android runtime permissions:</p>
+                    <ul>
+                        <li><strong>RECORD_AUDIO:</strong> Required for real-time speech recognition by Vosk STT. Audio frames are processed in volatile memory and never persisted to disk or streamed externally.</li>
+                        <li><strong>SYSTEM_ALERT_WINDOW:</strong> Required solely to render the floating HUD overlay widget above other applications.</li>
+                        <li><strong>WRITE_EXTERNAL_STORAGE:</strong> Optional; utilized only if you instruct the assistant to create local text notes.</li>
+                    </ul>
+                </div>
+
+                <div class="terms-clause">
+                    <h3>3. Open Source License & Liability</h3>
+                    <p>This software is provided "as is", without warranty of any kind, express or implied. The developer assumes no liability for device configuration changes executed as a direct result of user voice commands or sideloaded installation.</p>
+                </div>
+
+                <div class="terms-clause">
+                    <h3>4. Binary Integrity Verification</h3>
+                    <p>Always verify the SHA-256 hash of your downloaded binary against the published checksum on this page before installation to prevent package tampering.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="brand">
+                        <img src="assets/favi.png" alt="Ultron Assistant" class="brand-icon">
+                        Ultron Assistant
+                    </a>
+                    <p>Standalone offline voice assistant and device automation engine for Android.</p>
+                </div>
+
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h5>Navigation</h5>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#features">Capabilities</a></li>
+                            <li><a href="#architecture">Architecture</a></li>
+                            <li><a href="#playground">Playground</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Distribution</h5>
+                        <ul>
+                            <li><a href="#download">Download APK</a></li>
+                            <li><a href="https://github.com/wahidtk731-lgtm/ultron" target="_blank" rel="noopener noreferrer">Ultron GitHub</a></li>
+                            <li><a href="https://github.com/wahidtk731-lgtm/ultron-website" target="_blank" rel="noopener noreferrer">Website GitHub</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#" class="open-terms-modal">Privacy Policy</a></li>
+                            <li><a href="#" class="open-terms-modal">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Ultron Assistant. Open Source Project.</div>
+                <div>Maintained by <a href="https://github.com/wahidtk731-lgtm" target="_blank" rel="noopener noreferrer">wahidtk731-lgtm</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Engine -->
+    <script src="assets/script.js"></script>
+</body>
+</html>
