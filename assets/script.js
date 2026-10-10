@@ -63,21 +63,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyBtn = document.getElementById('copyChecksumBtn');
     const checksumHash = document.getElementById('checksumHash');
     if (copyBtn && checksumHash) {
+        function showCopied() {
+            const origText = copyBtn.textContent;
+            copyBtn.textContent = '✓ Copied!';
+            copyBtn.style.background = '#10b981';
+            copyBtn.style.color = '#fff';
+            setTimeout(() => {
+                copyBtn.textContent = origText;
+                copyBtn.style.background = '';
+                copyBtn.style.color = '';
+            }, 2000);
+        }
+
+        function fallbackCopy(text) {
+            try {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                const successful = document.execCommand('copy');
+                document.body.removeChild(ta);
+                if (successful) {
+                    showCopied();
+                } else {
+                    prompt('Copy SHA-256 checksum:', text);
+                }
+            } catch (err) {
+                prompt('Copy SHA-256 checksum:', text);
+            }
+        }
+
         copyBtn.addEventListener('click', () => {
             const hash = checksumHash.textContent.trim();
-            navigator.clipboard.writeText(hash).then(() => {
-                const origText = copyBtn.textContent;
-                copyBtn.textContent = '✓ Copied!';
-                copyBtn.style.background = '#10b981';
-                copyBtn.style.color = '#fff';
-                setTimeout(() => {
-                    copyBtn.textContent = origText;
-                    copyBtn.style.background = '';
-                    copyBtn.style.color = '';
-                }, 2000);
-            }).catch(() => {
-                alert('Checksum: ' + hash);
-            });
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(hash).then(showCopied).catch(() => {
+                    fallbackCopy(hash);
+                });
+            } else {
+                fallbackCopy(hash);
+            }
         });
     }
 
