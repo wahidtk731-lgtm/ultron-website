@@ -18,21 +18,24 @@
     <header class="header">
         <div class="container navbar">
             <a href="#" class="brand">
-                <img src="assets/favi.png" alt="Ultron Assistant" class="brand-icon">
-                Ultron Assistant
+                <img src="assets/favi.png" alt="Ultron" class="brand-icon">
+                <span>Ultron</span>
+                <span class="brand-tag">v1.0</span>
             </a>
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#features">Capabilities</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#playground">Playground</a></li>
                 <li><a href="#download">Download</a></li>
-                <li><a href="#" class="open-terms-modal">Terms & Privacy</a></li>
+                <li><a href="#support">Community</a></li>
+                <li><a href="#" class="open-terms-modal">Terms</a></li>
             </ul>
 
             <div class="nav-actions">
-                <a href="#download" class="btn btn-primary">Get APK (372 KB)</a>
+                <a href="#download" class="nav-btn">
+                    <span class="nav-btn-dot"></span>
+                    <span>Get APK · 372 KB</span>
+                </a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">☰</button>
             </div>
         </div>
@@ -138,153 +141,6 @@
                         <div class="feature-icon-wrapper" style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;">06</div>
                         <h3 class="feature-title">Direct Framework Integration</h3>
                         <p class="feature-text">Controls system hardware interfaces directly via native Android framework classes including WifiManager, BluetoothAdapter, NotificationListenerService, and StatusBarManager.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Architecture Deep Dive Section -->
-        <section class="section" id="architecture">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">System Architecture</span>
-                    <h2 class="section-title">Modular Subsystem Architecture</h2>
-                    <p class="section-description">Ultron separates audio ingestion, phonetic normalization, classification, and execution into isolated, deterministic stages.</p>
-                </div>
-
-                <div class="architecture-list">
-                    <div class="arch-item">
-                        <div class="arch-header">
-                            <span class="arch-class-name">SpeechNormalizer.java & VoskEngine</span>
-                            <span class="arch-tag">Audio & Acoustic Layer</span>
-                        </div>
-                        <p class="arch-desc">Converts raw 16kHz PCM microphone audio to text via Vosk acoustic models, immediately passing raw transcripts through the Phonetic Normalization Engine.</p>
-                        <ul class="arch-points">
-                            <li>Translates phonetically degraded acoustic outputs ("all thrown", "all drone", "hall drone") to canonical wake words.</li>
-                            <li>Operates with sub-15ms phonetic mapping overhead without loading heavy external language models.</li>
-                            <li>Handles wake word stripping and cleans punctuation remnants before intent classification.</li>
-                        </ul>
-                    </div>
-
-                    <div class="arch-item">
-                        <div class="arch-header">
-                            <span class="arch-class-name">UltronIntentEngine.java</span>
-                            <span class="arch-tag">NLP & Intent Classification</span>
-                        </div>
-                        <p class="arch-desc">Zero-cloud natural language understanding pipeline that parses user intent and extracts target system entities.</p>
-                        <ul class="arch-points">
-                            <li>Lexical analyzer identifies multi-command split markers: "and", "then", and "after that".</li>
-                            <li>Pattern matching engine matches commands across system settings, application launches, and deep links.</li>
-                            <li>Deterministic rule execution guarantees predictable output without cloud model hallucination.</li>
-                        </ul>
-                    </div>
-
-                    <div class="arch-item">
-                        <div class="arch-header">
-                            <span class="arch-class-name">FloatingWidgetService.java</span>
-                            <span class="arch-tag">UI & Foreground Service</span>
-                        </div>
-                        <p class="arch-desc">Android WindowManager overlay service providing an always-accessible assistant trigger across all active apps.</p>
-                        <ul class="arch-points">
-                            <li>Supports Click-to-Speak to trigger audio recognition instantly without wake word overhead.</li>
-                            <li>Visual state machine switches HUD glow: Cyan (Idle), Red Pulse (Listening), Amber (Processing), Green (Speaking).</li>
-                            <li>Runs as a lean foreground service maintaining low battery consumption and stable lifecycle persistence.</li>
-                        </ul>
-                    </div>
-
-                    <div class="arch-item">
-                        <div class="arch-header">
-                            <span class="arch-class-name">DeviceActionDispatcher.java</span>
-                            <span class="arch-tag">System Hardware & IPC</span>
-                        </div>
-                        <p class="arch-desc">Direct execution boundary communicating with native Android subsystems and PackageManager.</p>
-                        <ul class="arch-points">
-                            <li>Directly toggles device Wi-Fi, Bluetooth, quick settings shade, and status bar expansion.</li>
-                            <li>Queries installed applications to resolve target package names and launch main Activities.</li>
-                            <li>Routes specialized deep links (such as Instagram Reels and YouTube Shorts) directly to target application components.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Command Playground -->
-        <section class="section" id="playground">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Interactive Playground</span>
-                    <h2 class="section-title">Test the Intent Classifier</h2>
-                    <p class="section-description">Click any sample command below or type your own compound request to simulate how the Ultron Intent Engine tokenizes and sequences actions.</p>
-                </div>
-
-                <div class="command-playground">
-                    <div class="command-filters">
-                        <button class="cmd-filter-btn active" data-category="all">All Commands</button>
-                        <button class="cmd-filter-btn" data-category="system">System Controls</button>
-                        <button class="cmd-filter-btn" data-category="apps">App Deep Links</button>
-                        <button class="cmd-filter-btn" data-category="productivity">Productivity & Multi-Step</button>
-                    </div>
-
-                    <div class="command-grid">
-                        <button class="command-pill" data-cmd="turn on wifi" data-cat="system">
-                            <span>turn on wifi</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
-                        </button>
-                        <button class="command-pill" data-cmd="turn off bluetooth" data-cat="system">
-                            <span>turn off bluetooth</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
-                        </button>
-                        <button class="command-pill" data-cmd="clear notifications" data-cat="system">
-                            <span>clear notifications</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
-                        </button>
-                        <button class="command-pill" data-cmd="open quick settings" data-cat="system">
-                            <span>open quick settings</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
-                        </button>
-                        <button class="command-pill" data-cmd="switch to recent app" data-cat="system">
-                            <span>switch to recent app</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">System</span>
-                        </button>
-                        <button class="command-pill" data-cmd="open instagram reels" data-cat="apps">
-                            <span>open instagram reels</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">Deep Link</span>
-                        </button>
-                        <button class="command-pill" data-cmd="open youtube shorts" data-cat="apps">
-                            <span>open youtube shorts</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">Deep Link</span>
-                        </button>
-                        <button class="command-pill" data-cmd="open chrome" data-cat="apps">
-                            <span>open chrome</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">Launch</span>
-                        </button>
-                        <button class="command-pill" data-cmd="what time is it" data-cat="productivity">
-                            <span>what time is it</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">Query</span>
-                        </button>
-                        <button class="command-pill" data-cmd="take a note meeting at 4pm" data-cat="productivity">
-                            <span>take a note meeting at 4pm</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">Storage</span>
-                        </button>
-                        <button class="command-pill" data-cmd="search for rust programming tutorial" data-cat="productivity">
-                            <span>search for rust tutorial</span>
-                            <span style="color: var(--text-muted); font-size: 0.75rem;">Web</span>
-                        </button>
-                        <button class="command-pill" data-cmd="turn off wifi and open youtube shorts" data-cat="productivity">
-                            <span>turn off wifi and open shorts</span>
-                            <span style="color: var(--accent-cyan); font-size: 0.75rem;">Compound</span>
-                        </button>
-                    </div>
-
-                    <div class="simulator-box">
-                        <div class="sim-input-row">
-                            <input type="text" id="simInput" class="sim-input" placeholder="Type a command or compound phrase (e.g. 'turn on wifi and open chrome')..." value="turn off wifi and open youtube shorts">
-                            <button id="simRunBtn" class="btn btn-primary">Simulate</button>
-                        </div>
-                        <div id="simOutput" class="sim-output">
-                            <!-- Output populated by script.js -->
-                            <div style="color: var(--accent-cyan);">Click "Simulate" or choose any command above to test real-time intent parsing.</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -416,8 +272,8 @@
                         <ul>
                             <li><a href="#overview">Overview</a></li>
                             <li><a href="#features">Capabilities</a></li>
-                            <li><a href="#architecture">Architecture</a></li>
-                            <li><a href="#playground">Playground</a></li>
+                            <li><a href="#download">Download</a></li>
+                            <li><a href="#support">Community</a></li>
                         </ul>
                     </div>
 
@@ -427,6 +283,14 @@
                             <li><a href="#download">Download APK</a></li>
                             <li><a href="https://github.com/wahidtk731-lgtm/ultron" target="_blank" rel="noopener noreferrer">Ultron GitHub</a></li>
                             <li><a href="https://github.com/wahidtk731-lgtm/ultron-website" target="_blank" rel="noopener noreferrer">Website GitHub</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Community</h5>
+                        <ul>
+                            <li><a href="https://instagram.com/ultron._ai" target="_blank" rel="noopener noreferrer">Instagram (@ultron._ai)</a></li>
+                            <li><a href="https://github.com/wahidtk731-lgtm/ultron/issues" target="_blank" rel="noopener noreferrer">Report an Issue</a></li>
                         </ul>
                     </div>
 
@@ -441,8 +305,13 @@
             </div>
 
             <div class="footer-bottom">
-                <div>&copy; 2026 Ultron Assistant. Open Source Project.</div>
-                <div>Maintained by <a href="https://github.com/wahidtk731-lgtm" target="_blank" rel="noopener noreferrer">wahidtk731-lgtm</a></div>
+                <div>&copy; 2026 Ultron Assistant. Open Source Project. Maintained by <a href="https://github.com/wahidtk731-lgtm" target="_blank" rel="noopener noreferrer">wahidtk731-lgtm</a>.</div>
+                <a href="https://instagram.com/ultron._ai" target="_blank" rel="noopener noreferrer" class="instagram-link">
+                    <svg class="instagram-icon" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>Follow @ultron._ai</span>
+                </a>
             </div>
         </div>
     </footer>
