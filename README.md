@@ -13,7 +13,7 @@ Official standalone website and distribution portal for **Ultron Assistant** —
 - `assets/style.css` — Modern, lightweight dark mode styling with zero CSS framework bloat.
 - `assets/script.js` — Client-side modal dialog controls, navigation bar transitions, and SHA-256 verification utility.
 - `assets/favi.png` — Official Ultron Assistant high-resolution branding.
-- `UltronAssistant.apk` — Universal Android binary v1.1.1 (`SHA-256: e584a2ed066180ce23837711e78cc1fac88fc05c2ab3d47d1ee0e4a68f00feaf`).
+- `UltronAssistant.apk` — Universal Android binary v1.1.1 (`SHA-256: b978d003d532b9c20697fb299351d885a8f5539336d7674bb8e8163555fd9d28`).
 
 ## Local Development
 To preview the website locally:
