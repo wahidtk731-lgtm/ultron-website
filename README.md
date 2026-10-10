@@ -4,7 +4,7 @@ Official standalone website and distribution portal for **Ultron Assistant** —
 
 ## Overview
 - **Zero Cloud Dependencies:** Pure on-device speech-to-text (Vosk STT), offline intent classification, and native Android IPC.
-- **Ultra-Compact APK:** 372 KB standalone binary (`UltronAssistant.apk`).
+- **Ultra-Compact APK:** 380 KB standalone binary (`UltronAssistant.apk`).
 - **Privacy Guaranteed:** 0 KB external telemetry, zero tracking SDKs, air-gapped capability.
 - **Social & Updates:** Follow [@ultron._ai on Instagram](https://instagram.com/ultron._ai).
 
@@ -13,7 +13,7 @@ Official standalone website and distribution portal for **Ultron Assistant** —
 - `assets/style.css` — Modern, lightweight dark mode styling with zero CSS framework bloat.
 - `assets/script.js` — Client-side modal dialog controls, navigation bar transitions, and SHA-256 verification utility.
 - `assets/favi.png` — Official Ultron Assistant high-resolution branding.
-- `UltronAssistant.apk` — Universal Android binary v1.1.1 (`SHA-256: b978d003d532b9c20697fb299351d885a8f5539336d7674bb8e8163555fd9d28`).
+- `UltronAssistant.apk` — Universal Android binary v1.1.1 (`SHA-256: ccecbfcb216477bd9205cbfb4ea0198ad7ad62f048a0d250621e966c3bb563df`).
 
 ## Local Development
 To preview the website locally:
